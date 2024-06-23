@@ -12,11 +12,15 @@ public class MakeMoves extends Action {
     @Override
     public void perform(WorldMap worldMap) {
         Collection<Entity> entities = new CopyOnWriteArrayList<>(worldMap.getEntities());
-        Iterator<Entity> iterator = entities.iterator();
 
         for (Entity entity : entities) {
-            if (entity instanceof Creature) {
-                ((Creature) entity).makeMove(worldMap);
+            if (entity instanceof Creature creature) {
+                if (creature.isDead()) {
+                    creature.getErased(worldMap);
+                    continue;
+                }
+
+                creature.makeMove(worldMap);
             }
         }
     }

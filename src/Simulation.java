@@ -39,7 +39,7 @@ public class Simulation {
         initActions.add(new TreeGeneration(0.05));
     }
 
-    public void startSimulation() {
+    public void start() {
         performActions(initActions);
 
         while (true) {

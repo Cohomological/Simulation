@@ -20,6 +20,6 @@ public class Main {
         Renderer renderer = new ConsoleRenderer();
 
         Simulation simulation = new Simulation(renderer, worldMap);
-        simulation.startSimulation();
+        simulation.start();
     }
 }

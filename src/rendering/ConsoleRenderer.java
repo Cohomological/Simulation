@@ -3,10 +3,16 @@ package rendering;
 import exceptions.EntityNotFoundException;
 import world_map.*;
 
-import static rendering.EntitySprite.EMPTY_CELL_SPRITE;
+public class ConsoleRenderer implements Renderer {
+    EntitySprite sprite;
 
-public class ConsoleRenderer extends Renderer {
+    public ConsoleRenderer() {
+        sprite = new DinosaurSprite();
+    }
 
+    public ConsoleRenderer(EntitySprite sprite) {
+        this.sprite = sprite;
+    }
     @Override
     public void render(WorldMap map) {
         MapInfo mapInfo = map.getMapInfo();
@@ -16,11 +22,11 @@ public class ConsoleRenderer extends Renderer {
         for (int y = 0; y < height; y++) {
             StringBuilder stringBuilder = new StringBuilder();
             for (int x = 0; x < width; x++) {
-                String sprite = EMPTY_CELL_SPRITE;
+                String sprite = this.sprite.getEmptyCellSprite();
                 Coordinates coordinates = new Coordinates(x, y);
                 if (map.isOccupied(coordinates)) {
                     try {
-                        sprite = EntitySprite.getSprite(map.getEntity(coordinates));
+                        sprite = this.sprite.getSprite(map.getEntity(coordinates));
                     } catch (EntityNotFoundException e) {
                         throw new RuntimeException(e);
                     }

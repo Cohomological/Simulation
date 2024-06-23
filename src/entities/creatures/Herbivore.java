@@ -25,11 +25,6 @@ public class Herbivore extends Creature {
 
     @Override
     public void makeMove(WorldMap worldMap) {
-        if (isDead()) {
-            getErased(worldMap);
-            return;
-        }
-
         moveTowardsOrInteractWithTarget(worldMap);
     }
 }

@@ -48,10 +48,11 @@ public class WorldMap {
         return worldMap.get(coordinates);
     }
 
-    public void removeEntity(Coordinates coordinates) {
-        if (isOccupied(coordinates)) {
-            worldMap.remove(coordinates);
+    public void removeEntity(Coordinates coordinates) throws EntityNotFoundException {
+        if (!isOccupied(coordinates)) {
+            throw new EntityNotFoundException("No entity found at given coordinates.");
         }
+        worldMap.remove(coordinates);
     }
     public MapInfo getMapInfo() {
         return new MapInfo(width, height);

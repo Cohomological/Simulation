@@ -36,7 +36,7 @@ public abstract class Creature extends Entity {
         this.hp = hp;
     }
 
-    protected boolean isDead() {
+    public boolean isDead() {
         return hp <= 0;
     }
 
@@ -75,7 +75,11 @@ public abstract class Creature extends Entity {
 
     private void moveTo(WorldMap worldMap, Coordinates coordinates) {
         if (worldMap.isCorrectCoordinates((coordinates))) {
-            worldMap.removeEntity(this.coordinates);
+            try {
+                worldMap.removeEntity(this.coordinates);
+            } catch (EntityNotFoundException e) {
+                throw new RuntimeException(e);
+            }
             worldMap.setEntity(coordinates, this);
             this.coordinates = coordinates;
 
