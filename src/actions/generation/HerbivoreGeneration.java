@@ -19,7 +19,7 @@ public class HerbivoreGeneration extends EntityGeneration {
 
     @Override
     protected Entity createEntity(Coordinates coordinates) {
-        return new Herbivore(coordinates);
+        return new Herbivore(hp, moveSpeed, coordinates);
     }
 
     public HerbivoreGeneration(double percentage) {

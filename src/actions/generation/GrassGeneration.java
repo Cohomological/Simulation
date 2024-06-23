@@ -9,9 +9,6 @@ public class GrassGeneration extends EntityGeneration {
         super(percentage);
     }
 
-    public GrassGeneration() {
-    }
-
 
     @Override
     protected Entity createEntity(Coordinates coordinates) {

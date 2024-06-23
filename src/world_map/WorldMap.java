@@ -13,7 +13,7 @@ public class WorldMap {
     private static final int DEFAULT_HEIGHT = 20;
     private final int width;
     private final int height;
-    private HashMap<Coordinates, Entity> worldMap = new HashMap<>();
+    private final HashMap<Coordinates, Entity> worldMap = new HashMap<>();
 
     public WorldMap(int width, int height) {
         this.width = width;

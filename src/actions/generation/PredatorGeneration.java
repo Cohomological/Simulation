@@ -24,12 +24,9 @@ public class PredatorGeneration extends EntityGeneration {
         super(percentage);
     }
 
-    public PredatorGeneration() {
-    }
-
     @Override
     protected Entity createEntity(Coordinates coordinates) {
-        return new Predator(coordinates);
+        return new Predator(hp, moveSpeed, coordinates, attackDamage);
     }
 
     @Override
